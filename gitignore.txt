@@ -1,8 +1,0 @@
-# Node.js
-node_modules/
-npm-debug.log
-yarn-error.log
-
-# Sistema
-.DS_Store
-Thumbs.db
