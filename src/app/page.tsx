@@ -1,15 +1,14 @@
 // app/page.tsx
 'use client';
 
-import { useState } from 'react';
 import PokemonList from '@/components/pokemonList';
 import Loading from './loading';
+import { usePokemonContext } from '@/contexts/PokemonContext';
 import { usePokemons } from '@/hooks/usePokemons';
 
 export default function HomePage() {
-  const [startIndex, setStartIndex] = useState(0);
-  const [limit, setLimit] = useState(20);
-  const { data: pokemons, isLoading, isError } = usePokemons(limit);
+  const { page, setPage } = usePokemonContext();
+  const { data, isLoading, isError } = usePokemons(page);
 
   if (isLoading) {
     return <Loading />;
@@ -18,19 +17,32 @@ export default function HomePage() {
   if (isError) {
     return <p>Error al cargar los Pokémon.</p>;
   }
+  
+  const pokemons = data?.results || [];
 
   return (
     <main>
-      <h1 className="text-2xl font-bold mb-4">Lista de Pokémon</h1>
-      <PokemonList pokemons={pokemons || []} />
-      <div className="flex justify-center mt-8">
+      <div className="flex justify-between items-center mb-4">
+        <h1 className="text-2xl font-bold">Lista de Pokémon</h1>
+        <span className="text-lg font-semibold">Página {page}</span>
+      </div>
+
+      <PokemonList pokemons={pokemons} />
+      
+      <div className="flex justify-center items-center gap-4 mt-8">
         <button
-          //onClick
-          onClick={() => //setStartIndex(prevStartIndex => prevStartIndex + 20) 
-            setLimit(prevLimit => prevLimit + 20)}
-          className="bg-blue-500 text-white py-2 px-6 rounded-lg hover:bg-blue-600 transition-colors"
+          onClick={() => setPage((prevPage) => Math.max(prevPage - 1, 1))}
+          disabled={!data?.hasPreviousPage}
+          className="bg-blue-500 text-white py-2 px-6 rounded-lg hover:bg-blue-600 transition-colors disabled:bg-gray-400"
         >
-          Siguiente Página
+          Anterior
+        </button>
+        <button
+          onClick={() => setPage((prevPage) => prevPage + 1)}
+          disabled={!data?.hasNextPage}
+          className="bg-blue-500 text-white py-2 px-6 rounded-lg hover:bg-blue-600 transition-colors disabled:bg-gray-400"
+        >
+          Siguiente
         </button>
       </div>
     </main>

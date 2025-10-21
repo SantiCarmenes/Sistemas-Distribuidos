@@ -1,10 +1,11 @@
 // src/hooks/usePokemons.ts
 import { useQuery } from '@tanstack/react-query';
-import { getPokemons, Pokemon } from '@/services/pokemon';
+import { getPokemons } from '@/services/pokemon';
 
-export const usePokemons = (limit: number) => {
-  return useQuery<Pokemon[]>({
-    queryKey: ['pokemons', limit],
-    queryFn: () => getPokemons(limit),
+// El hook ahora depende de la página que se le pasa
+export const usePokemons = (page: number) => {
+  return useQuery({
+    queryKey: ['pokemons', page], // La clave de caché ahora incluye la página
+    queryFn: () => getPokemons(page),
   });
 };
