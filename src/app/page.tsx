@@ -1,27 +1,35 @@
 // app/page.tsx
+'use client';
+
+import { useState } from 'react';
 import PokemonList from '@/components/pokemonList';
+import Loading from './loading'; // Importamos el componente de carga
+import { usePokemons } from '@/hooks/usePokemons';
 
-// Interfaz para el tipo de dato de cada Pokémon en la lista
-interface Pokemon {
-  name: string;
-  url: string;
-}
+export default function HomePage() {
+  const [limit, setLimit] = useState(30); // Estado para controlar la cantidad de Pokémon
+  const { data: pokemons, isLoading, isError } = usePokemons(limit);
 
-// 1. Convertimos la página en un componente asíncrono del servidor
-export default async function HomePage() {
-  // Puse esto para ver la carga de la pagina, si no ni se veia
-  //await new Promise(resolve => setTimeout(resolve, 3000));
+  if (isLoading) {
+    return <Loading />; // Mostramos el skeleton mientras carga
+  }
 
-  // 2. Obtenemos los datos directamente en el servidor
-  const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=30&offset=0');
-  const data = await response.json();
-  const pokemons: Pokemon[] = data.results;
+  if (isError) {
+    return <p>Error al cargar los Pokémon.</p>;
+  }
 
   return (
     <main>
       <h1 className="text-2xl font-bold mb-4">Lista de Pokémon</h1>
-      {/* 3. Pasamos los datos como prop al componente cliente */}
-      <PokemonList pokemons={pokemons} />
+      <PokemonList pokemons={pokemons || []} />
+      <div className="flex justify-center mt-8">
+        <button
+          onClick={() => setLimit(prevLimit => prevLimit + 30)} // Aumentamos el límite al hacer clic
+          className="bg-blue-500 text-white py-2 px-6 rounded-lg hover:bg-blue-600 transition-colors"
+        >
+          Cargar más
+        </button>
+      </div>
     </main>
   );
 }
