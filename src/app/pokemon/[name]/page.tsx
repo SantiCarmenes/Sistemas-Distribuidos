@@ -59,18 +59,16 @@ export default async function PokemonDetailPage({ params }: { params: { name: st
                 <h3 className="text-lg font-semibold text-white" style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.7)' }}>Tipo(s)</h3>
                 <div className="flex justify-center gap-2 mt-2">
                     {pokemon.types.map(({ type }) => {
-                        // Obtenemos el estilo para el tipo actual, o usamos el por defecto si no existe
+                        
                         const style = typeStyles[type.name] || defaultStyle;
 
                         return (
                         <span 
                             key={type.name} 
-                            // Aplicamos los estilos de forma dinámica
                             style={{ 
                             backgroundColor: style.backgroundColor, 
                             color: style.color 
                             }}
-                            // Mantenemos las clases de Tailwind para el formato y tamaño
                             className="px-3 py-1 rounded-full text-sm font-semibold capitalize shadow-md"
                         >
                             {type.name}
@@ -94,7 +92,7 @@ export default async function PokemonDetailPage({ params }: { params: { name: st
         </div>
         
         <Link href="/" className="mt-8 bg-blue-400 text-white py-2 px-4 rounded hover:bg-blue-500 transition-colors">
-          &larr; Volver a la lista
+          Volver
         </Link>
       </div>
     );
@@ -105,7 +103,7 @@ export default async function PokemonDetailPage({ params }: { params: { name: st
         <h1 className="text-3xl font-bold text-red-600">Error</h1>
         <p>No se pudo encontrar al Pokémon "{pokemonName}".</p>
         <Link href="/" className="mt-4 inline-block text-blue-500 hover:underline">
-          Volver a la lista
+          Volver
         </Link>
       </div>
     );

@@ -4,7 +4,7 @@ import { getPokemons, Pokemon } from '@/services/pokemon';
 
 export const usePokemons = (limit: number) => {
   return useQuery<Pokemon[]>({
-    queryKey: ['pokemons', limit], // La clave de caché incluye el límite para diferenciar las peticiones
+    queryKey: ['pokemons', limit],
     queryFn: () => getPokemons(limit),
   });
 };

@@ -36,7 +36,6 @@ const usePokemonData = (url: string) => {
 export default function PokemonItem({ pokemon }: PokemonItemProps) {
   const { data: pokemonData, isLoading } = usePokemonData(pokemon.url);
 
-
   if (isLoading || !pokemonData) {
     return (
         <div className="border rounded-lg p-4 bg-gray-100 animate-pulse">

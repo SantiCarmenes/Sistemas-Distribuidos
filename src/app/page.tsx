@@ -3,15 +3,16 @@
 
 import { useState } from 'react';
 import PokemonList from '@/components/pokemonList';
-import Loading from './loading'; // Importamos el componente de carga
+import Loading from './loading';
 import { usePokemons } from '@/hooks/usePokemons';
 
 export default function HomePage() {
-  const [limit, setLimit] = useState(30); // Estado para controlar la cantidad de Pokémon
+  const [startIndex, setStartIndex] = useState(0);
+  const [limit, setLimit] = useState(20);
   const { data: pokemons, isLoading, isError } = usePokemons(limit);
 
   if (isLoading) {
-    return <Loading />; // Mostramos el skeleton mientras carga
+    return <Loading />;
   }
 
   if (isError) {
@@ -24,10 +25,12 @@ export default function HomePage() {
       <PokemonList pokemons={pokemons || []} />
       <div className="flex justify-center mt-8">
         <button
-          onClick={() => setLimit(prevLimit => prevLimit + 30)} // Aumentamos el límite al hacer clic
+          //onClick
+          onClick={() => //setStartIndex(prevStartIndex => prevStartIndex + 20) 
+            setLimit(prevLimit => prevLimit + 20)}
           className="bg-blue-500 text-white py-2 px-6 rounded-lg hover:bg-blue-600 transition-colors"
         >
-          Cargar más
+          Siguiente Página
         </button>
       </div>
     </main>

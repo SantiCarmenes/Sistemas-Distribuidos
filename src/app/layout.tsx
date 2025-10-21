@@ -1,5 +1,5 @@
 // app/layout.tsx
-"use client"; // Convertimos el layout en un Client Component para usar el provider
+"use client";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactNode, useState } from "react";
@@ -7,13 +7,11 @@ import Link from "next/link";
 import './globals.css';
 
 export default function RootLayout({ children }: { children: ReactNode }) {
-  // Creamos una instancia de QueryClient
   const [queryClient] = useState(() => new QueryClient());
 
   return (
     <html lang="es">
       <body>
-        {/* Envolvemos la aplicación con el QueryClientProvider */}
         <QueryClientProvider client={queryClient}>
           <header className="bg-[#651FA6] text-white p-4">
             <nav className="container mx-auto">
