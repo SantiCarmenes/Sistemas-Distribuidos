@@ -1,23 +1,44 @@
 "use client"; // Importante porque usa hooks
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Link from "next/link";
 
 interface PokemonItemProps {
-  name: string;
-  image: string;
+  pokemon: {
+    name: string;
+    url: string;
+  };
 }
 
-export default function PokemonItem({ name, image }: PokemonItemProps) {
-  const [clicks, setClicks] = useState(0);
+interface PokemonData {
+  sprites: {
+    front_default: string;
+  };
+}
 
+export default function PokemonItem({ pokemon }: PokemonItemProps) {
+  const [pokemonData, setPokemonData] = useState<PokemonData | null>(null);
+
+  useEffect(() => {
+    // Fetch para obtener los datos del Pokémon
+    fetch(pokemon.url)
+      .then((res) => res.json())
+      .then((data) => setPokemonData(data));
+  }, [pokemon.url]);
+
+  if (!pokemonData) {
+    return <div>Cargando...</div>;
+  }
+  
   return (
-    <button
-      onClick={() => setClicks(clicks + 1)}
-      className="border p-3 m-2 rounded-lg shadow hover:border-blue-900 flex flex-col items-center"
-    >
-      <img src={image} alt={name} className="w-20 h-20" />
-      <p className="font-bold capitalize">{name}</p>
-      <p>Capturado {clicks} veces</p>
-    </button>
+    // Envolvemos todo en el componente Link
+    <Link href={`/pokemon/${pokemon.name}`} className="border rounded-lg p-4 text-center hover:shadow-lg transition-shadow">
+      <img
+        src={pokemonData.sprites.front_default}
+        alt={pokemon.name}
+        className="w-32 h-32 mx-auto"
+      />
+      <h2 className="text-xl font-bold capitalize mt-2">{pokemon.name}</h2>
+    </Link>
   );
 }

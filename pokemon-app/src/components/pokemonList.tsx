@@ -1,58 +1,28 @@
-"use client";
+// src/components/pokemonList.tsx
+'use client'; // Sigue siendo un Client Component
 
-import { useEffect, useState } from "react";
-import axios from "axios";
-import PokemonItem from "./pokemonItem";
+import PokemonItem from './pokemonItem';
 
-interface PokemonAPIResult {
+// Define el tipo para la lista que recibe
+interface Pokemon {
   name: string;
   url: string;
 }
 
-interface Pokemon {
-  name: string;
-  image: string;
+interface PokemonListProps {
+  pokemons: Pokemon[];
 }
 
-export default function PokemonList() {
-  const [pokemons, setPokemons] = useState<Pokemon[]>([]);
-
-  useEffect(() => {
-    axios
-      .get("https://pokeapi.co/api/v2/pokemon?limit=20")
-      .then(async (res) => {
-        // results tiene name y url, necesitamos pedir la imagen de cada uno
-        const results: PokemonAPIResult[] = res.data.results;
-
-        const data = await Promise.all(
-          results.map(async (pokemon) => {
-            const details = await axios.get(pokemon.url);
-            return {
-              name: pokemon.name,
-              image: details.data.sprites.front_default,
-            };
-          })
-        );
-
-        setPokemons(data);
-      })
-      .catch((err) => {
-        console.error("Error al cargar pokemons:", err);
-      });
-  }, []);
-
+// 1. El componente ahora recibe `pokemons` como una prop
+export default function PokemonList({ pokemons }: PokemonListProps) {
+  // 2. ¡Ya no necesitamos useState ni useEffect aquí!
+  
   return (
-    <div>
-      <h1 className="text-2xl font-bold mb-4">Listado de Pokémons</h1>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {pokemons.map((pokemon) => (
-          <PokemonItem
-            key={pokemon.name}
-            name={pokemon.name}
-            image={pokemon.image}
-          />
-        ))}
-      </div>
+    <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+      {pokemons.map((pokemon) => (
+        // La clave está en pasar el `pokemon` correcto a cada `PokemonItem`
+        <PokemonItem key={pokemon.name} pokemon={pokemon} />
+      ))}
     </div>
   );
 }
