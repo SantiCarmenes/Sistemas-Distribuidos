@@ -16,9 +16,14 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <QueryClientProvider client={queryClient}>
           <PokemonProvider>
             <header className="bg-[#651FA6] text-white p-4">
-              <nav className="container mx-auto">
+              {/* Ajusta el div o nav para flex y espacio si es necesario */}
+              <nav className="container mx-auto flex justify-between items-center">
                 <Link href="/" className="text-xl font-bold hover:text-[#CFAF34]">
                   Pokedex
+                </Link>
+                {/* Nuevo enlace a Favoritos */}
+                <Link href="/favorites" className="text-lg hover:text-[#CFAF34] ml-4">
+                  Favoritos ⭐
                 </Link>
               </nav>
             </header>
@@ -28,7 +33,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             </main>
 
             <footer className="bg-[#651FA6] text-center p-4 mt-8">
-              <p>Actividad 6 - Sistemas Distribuidos</p>
+              {/* Actualiza el texto del footer si quieres */}
+              <p>Actividad 7 - Sistemas Distribuidos</p>
             </footer>
           </PokemonProvider>
         </QueryClientProvider>
