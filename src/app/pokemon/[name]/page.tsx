@@ -47,13 +47,13 @@ export default async function PokemonDetailPage({ params }: { params: { name: st
           <div className="absolute inset-0 flex flex-col justify-between p-8 text-center">
             
             <div>
-              <h1 className="text-4xl md:text-5xl font-bold capitalize text-white" style={{ textShadow: '2px 2px 6px rgba(0,0,0,0.8)' }}>
+              <h1 className="text-4xl md:text-4xl font-bold capitalize text-white" style={{ textShadow: '2px 2px 6px rgba(0,0,0,0.8)' }}>
                 {pokemon.name}
               </h1>
 
-              <h1 className="text-2xl md:text-5xl font-bold capitalize text-white" style={{ textShadow: '2px 2px 6px rgba(0,0,0,0.8)' }}>
+              <h2 className="text-2xl md:text-2xl capitalize text-white" style={{ textShadow: '2px 2px 6px rgba(0,0,0,0.8)' }}>
                 #{pokemon.id}
-              </h1>
+              </h2>
               
               <div className="flex justify-center gap-4 my-4">
                 <img src={pokemon.sprites.front_default} alt={pokemon.name} className="w-32 h-32 md:w-40 md:h-40 drop-shadow-lg" />
