@@ -52,7 +52,7 @@ export default function PokemonItem({ pokemon }: PokemonItemProps) {
         alt={pokemon.name}
         className="w-32 h-32 mx-auto"
       />
-      <h2 className="text-xl font-bold capitalize mt-2">{pokemon.name}</h2>
+      <h2 className="text-xl font-bold capitalize">{pokemon.name}</h2>
     </Link>
   );
 }

@@ -1,5 +1,5 @@
 // app/layout.tsx
-"use client";
+"use client"; //client component (usa useState y contextAPI)
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactNode, useState } from "react";

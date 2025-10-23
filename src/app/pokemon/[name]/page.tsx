@@ -5,23 +5,24 @@ import Image from 'next/image';
 import { typeStyles, defaultStyle } from '@/lib/pokemonColors';
 
 interface PokemonDetails {
-    name: string;
+    id: number; //número de la Pokédex
+    name: string; //nombre del Pokémon
     sprites: {
-      front_default: string;
-      back_default: string;
+      front_default: string; //imagen frontal del Pokémon
+      back_default: string; //imagen trasera del Pokémon
     };
     types: {
       type: {
-        name: string;
+        name: string; //tipo del Pokémon
       };
-    }[];
-    height: number;
-    weight: number;
+    }[]; //array de tipos del Pokémon
+    height: number; //altura del Pokémon
+    weight: number; //peso del Pokémon
   }
   
 
 export default async function PokemonDetailPage({ params }: { params: { name: string } }) {
-    const { name: pokemonName } = await params;
+    const { name: pokemonName } = await params; //extrae el nombre del Pokémon de los parámetros de la ruta para hacer el fetch
 
   try {
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
@@ -48,6 +49,10 @@ export default async function PokemonDetailPage({ params }: { params: { name: st
             <div>
               <h1 className="text-4xl md:text-5xl font-bold capitalize text-white" style={{ textShadow: '2px 2px 6px rgba(0,0,0,0.8)' }}>
                 {pokemon.name}
+              </h1>
+
+              <h1 className="text-2xl md:text-5xl font-bold capitalize text-white" style={{ textShadow: '2px 2px 6px rgba(0,0,0,0.8)' }}>
+                #{pokemon.id}
               </h1>
               
               <div className="flex justify-center gap-4 my-4">

@@ -1,5 +1,5 @@
 // app/page.tsx
-'use client';
+'use client'; //client component
 
 import PokemonList from '@/components/pokemonList';
 import Loading from './loading';
