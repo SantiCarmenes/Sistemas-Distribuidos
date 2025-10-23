@@ -4,5 +4,11 @@
     "name": "squirtle",
     "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png",
     "addedAt": "2025-10-23T20:48:14.301Z"
+  },
+  {
+    "id": 65,
+    "name": "alakazam",
+    "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/65.png",
+    "addedAt": "2025-10-23T22:25:54.006Z"
   }
 ]
