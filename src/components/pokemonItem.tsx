@@ -3,44 +3,38 @@
 
 import Link from "next/link";
 import { useFavorites, useAddFavorite, useRemoveFavorite } from "@/hooks/useFavorites";
-import { FavoritePokemon } from "@/lib/favoritesDatabase"; // Asegúrate que la ruta es correcta
+import { FavoritePokemon } from "@/lib/favoritesDatabase";
 
 interface PokemonItemProps {
   pokemon: {
     name: string;
-    url: string; // URL como "https://pokeapi.co/api/v2/pokemon/12/"
+    url: string;
   };
 }
 
-// Función helper para extraer ID de la URL
 const getPokemonIdFromUrl = (url: string): string | null => {
     const match = url.match(/\/(\d+)\/?$/); // Busca números al final de la URL
     return match ? match[1] : null;
 }
 
-// Función helper para construir la URL del sprite
 const getPokemonImageUrl = (id: string): string => {
-    // Usamos la URL base de los sprites oficiales de PokeAPI/sprites
     return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
 }
 
 export default function PokemonItem({ pokemon }: PokemonItemProps) {
-  // --- Obtenemos ID y URL de imagen directamente ---
   const pokemonId = getPokemonIdFromUrl(pokemon.url);
-  const imageUrl = pokemonId ? getPokemonImageUrl(pokemonId) : null; // Construye la URL si tenemos ID
+  const imageUrl = pokemonId ? getPokemonImageUrl(pokemonId) : null;
 
-  // --- Lógica de Favoritos (necesita el ID numérico) ---
   const numericPokemonId = pokemonId ? parseInt(pokemonId, 10) : null;
   const { data: favorites, isLoading: isLoadingFavorites } = useFavorites();
   const addFavoriteMutation = useAddFavorite();
   const removeFavoriteMutation = useRemoveFavorite();
 
-  const canInteractWithFavorites = numericPokemonId !== null && !!imageUrl; // Solo interactuar si hay ID e Imagen
+  const canInteractWithFavorites = numericPokemonId !== null && !!imageUrl;
   const isFavorite = canInteractWithFavorites && !!favorites && favorites.some(fav => fav.id === numericPokemonId);
   const isMutatingFavorite = addFavoriteMutation.isPending || removeFavoriteMutation.isPending;
 
   const handleToggleFavorite = () => {
-    // Solo proceder si tenemos ID e imagen URL válidos
     if (!numericPokemonId || !imageUrl) return;
 
     if (isFavorite) {
@@ -53,10 +47,7 @@ export default function PokemonItem({ pokemon }: PokemonItemProps) {
       });
     }
   };
-  // --- Fin Lógica de Favoritos ---
 
-  // --- Renderizado ---
-  // Estado si no pudimos extraer ID o construir URL (raro, pero posible)
   if (!pokemonId) {
      return (
         <div className="border rounded-lg p-4 text-center bg-gray-100 h-[240px] flex justify-center items-center">
@@ -65,15 +56,13 @@ export default function PokemonItem({ pokemon }: PokemonItemProps) {
      );
   }
 
-  // Renderizado normal con estrella e imagen directa
   return (
     <div className="border rounded-lg p-4 text-center relative transition-shadow hover:shadow-lg h-[240px] flex flex-col justify-between">
 
-      {/* Botón de Estrella (Solo se muestra/funciona si podemos interactuar) */}
       {canInteractWithFavorites && (
           <button
             onClick={handleToggleFavorite}
-            disabled={isMutatingFavorite || isLoadingFavorites} // Ya no necesitamos deshabilitar por !imageUrl aquí
+            disabled={isMutatingFavorite || isLoadingFavorites}
             className={`absolute top-2 right-2 p-1 rounded-full focus:outline-none focus:ring-2 focus:ring-yellow-400 disabled:opacity-50 disabled:cursor-not-allowed z-10 transition-colors duration-200 ease-in-out
                         ${isMutatingFavorite ? 'animate-pulse' : ''}
                       `}
@@ -90,29 +79,25 @@ export default function PokemonItem({ pokemon }: PokemonItemProps) {
           </button>
       )}
 
-      {/* Contenido del Pokémon */}
       <Link href={`/pokemon/${pokemon.name}`} className="block mt-4">
-        {imageUrl ? ( // Muestra imagen si la URL se construyó
+        {imageUrl ? ( // muestra imagen
             <img
-                src={imageUrl} // Usa la URL construida
+                src={imageUrl}
                 alt={pokemon.name}
                 className="w-32 h-32 mx-auto"
                 loading="lazy"
-                // IMPORTANTE: Asegúrate de tener /public/placeholder.png o elimina este onError
                 onError={(e) => {
                     const target = e.target as HTMLImageElement;
-                    target.src = '/placeholder.png'; // Cambia a tu imagen placeholder
-                    target.onerror = null; // Previene bucles
-                    target.classList.add('opacity-50'); // Opcional: Atenuar el placeholder
+                    target.src = '/placeholder.png'; //se muestra esto si la imagen no carga
+                    target.onerror = null;
                 }}
             />
-        ) : ( // Muestra placeholder DIV si no pudimos construir la URL (raro)
+        ) : (
              <div className="w-32 h-32 mx-auto bg-gray-200 flex items-center justify-center text-gray-500 rounded-md">?</div>
         )}
         <h2 className="text-xl font-bold capitalize mt-2 truncate">{pokemon.name}</h2>
       </Link>
 
-      {/* Espacio para errores de favoritos */}
       <div className="h-4 mt-1">
          {(addFavoriteMutation.isError || removeFavoriteMutation.isError) && (
             <p className="text-red-500 text-xs">

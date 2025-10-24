@@ -1,20 +1,26 @@
 [
   {
-    "id": 7,
-    "name": "squirtle",
-    "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png",
-    "addedAt": "2025-10-23T20:48:14.301Z"
+    "id": 94,
+    "name": "gengar",
+    "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/94.png",
+    "addedAt": "2025-10-23T22:49:34.560Z"
   },
   {
-    "id": 157,
-    "name": "typhlosion",
-    "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/157.png",
-    "addedAt": "2025-10-23T22:41:04.413Z"
+    "id": 376,
+    "name": "metagross",
+    "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/376.png",
+    "addedAt": "2025-10-23T23:34:37.751Z"
   },
   {
-    "id": 9,
-    "name": "blastoise",
-    "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png",
-    "addedAt": "2025-10-23T22:44:39.978Z"
+    "id": 445,
+    "name": "garchomp",
+    "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/445.png",
+    "addedAt": "2025-10-23T23:35:10.466Z"
+  },
+  {
+    "id": 487,
+    "name": "giratina-altered",
+    "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/487.png",
+    "addedAt": "2025-10-24T00:00:15.075Z"
   }
 ]

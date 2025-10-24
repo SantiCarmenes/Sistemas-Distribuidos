@@ -16,12 +16,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <QueryClientProvider client={queryClient}>
           <PokemonProvider>
             <header className="bg-[#651FA6] text-white p-4">
-              {/* Ajusta el div o nav para flex y espacio si es necesario */}
               <nav className="container mx-auto flex justify-between items-center">
                 <Link href="/" className="text-xl font-bold hover:text-[#CFAF34]">
                   Pokedex
                 </Link>
-                {/* Nuevo enlace a Favoritos */}
                 <Link href="/favorites" className="text-lg hover:text-[#CFAF34] ml-4">
                   Favoritos ⭐
                 </Link>

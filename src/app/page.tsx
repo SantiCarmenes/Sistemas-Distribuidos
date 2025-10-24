@@ -28,19 +28,20 @@ export default function HomePage() {
       </div>
 
       <PokemonList pokemons={pokemons} />
-      
+
       <div className="flex justify-center items-center gap-4 mt-8">
         <button
           onClick={() => setPage((prevPage) => Math.max(prevPage - 1, 1))}
           disabled={!data?.hasPreviousPage}
-          className="bg-blue-500 text-white py-2 px-6 rounded-lg hover:bg-blue-600 transition-colors disabled:bg-gray-400"
+          className="bg-red-400 text-white py-2 px-6 rounded-lg hover:bg-red-500 transition-colors disabled:bg-gray-400"
         >
           Anterior
         </button>
+
         <button
           onClick={() => setPage((prevPage) => prevPage + 1)}
           disabled={!data?.hasNextPage}
-          className="bg-blue-500 text-white py-2 px-6 rounded-lg hover:bg-blue-600 transition-colors disabled:bg-gray-400"
+          className="bg-blue-400 text-white py-2 px-6 rounded-lg hover:bg-blue-500 transition-colors disabled:bg-gray-400"
         >
           Siguiente
         </button>
