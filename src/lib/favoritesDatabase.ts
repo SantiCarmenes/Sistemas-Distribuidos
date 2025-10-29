@@ -22,13 +22,11 @@ class FavoritesDatabase {
         return [];
       }
       console.error("Error reading favorites DB:", error);
-      // En caso de otro error, podríamos lanzar el error o devolver vacío igual
       return [];
     }
   }
 
   private async writeDB(data: FavoritePokemon[]): Promise<void> {
-    // Escribimos el array completo al archivo JSON
     await fs.writeFile(DB_PATH, JSON.stringify(data, null, 2), "utf-8");
   }
 
@@ -45,7 +43,7 @@ class FavoritesDatabase {
     const data = await this.readDB();
     if (data.some(fav => fav.id === pokemon.id)) {
       console.log(`Pokemon con ID ${pokemon.id} ya existe en favoritos.`);
-      return null; // O lanzar un error específico
+      return null;
     }
 
     const newFavorite: FavoritePokemon = {
@@ -63,11 +61,11 @@ class FavoritesDatabase {
     const filteredData = data.filter((item) => item.id !== id);
 
     if (filteredData.length === initialLength) {
-      return false; // No se encontró y no se eliminó
+      return false;
     }
 
     await this.writeDB(filteredData);
-    return true; // Se eliminó correctamente
+    return true; // Se elimino correctamente
   }
 
 }

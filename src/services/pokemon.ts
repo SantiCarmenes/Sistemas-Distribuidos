@@ -12,7 +12,7 @@ interface PokemonApiResponse {
   previous: string | null;
 }
 
-// La función ahora recibe la página y el límite
+// para recibir segun la pagina
 export const getPokemons = async (page: number, limit: number = 30): Promise<{ results: Pokemon[], hasNextPage: boolean, hasPreviousPage: boolean }> => {
   const offset = (page - 1) * limit;
   const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`);

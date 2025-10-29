@@ -3,8 +3,6 @@
 
 import { useFavorites } from "@/hooks/useFavorites";
 import Link from "next/link";
-// Podrías crear un componente específico FavoritePokemonItem o reutilizar PokemonItem
-// Aquí reutilizaré una versión simplificada para el ejemplo:
 import { useRemoveFavorite } from "@/hooks/useFavorites";
 import { FavoritePokemon } from "@/lib/favoritesDatabase";
 
@@ -13,7 +11,7 @@ function FavoriteItem({ favorite }: { favorite: FavoritePokemon }) {
     const removeMutation = useRemoveFavorite();
 
     const handleRemove = () => {
-        if (confirm(`¿Quitar a ${favorite.name} de favoritos?`)) {
+        if (confirm(`¿Querés quitar a ${favorite.name} de favoritos?`)) {
             removeMutation.mutate(favorite.id);
         }
     }

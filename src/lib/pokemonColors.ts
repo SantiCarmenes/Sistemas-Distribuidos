@@ -26,7 +26,7 @@ export const typeStyles: { [key: string]: TypeStyle } = {
   fairy:    { backgroundColor: 'rgba(252, 189, 203, 0.9)', color: '#000000' },
 };
 
-// default style if type is not found
+// default
 export const defaultStyle: TypeStyle = {
     backgroundColor: 'rgba(67, 119, 104, 0.9)',
     color: '#FFFFFF',

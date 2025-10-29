@@ -37,7 +37,7 @@ export default async function PokemonDetailPage({ params }: { params: { name: st
           
           <Image
             src="/card_background.jpeg"
-            alt="Fondo de la carta Pokémon"
+            alt="Fondo de la carta"
             width={800}
             height={1120}
             className="w-full h-auto rounded-lg shadow-2xl"

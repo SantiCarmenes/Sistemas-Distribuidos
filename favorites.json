@@ -22,5 +22,77 @@
     "name": "giratina-altered",
     "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/487.png",
     "addedAt": "2025-10-24T00:00:15.075Z"
+  },
+  {
+    "id": 181,
+    "name": "ampharos",
+    "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/181.png",
+    "addedAt": "2025-10-29T21:39:22.523Z"
+  },
+  {
+    "id": 260,
+    "name": "swampert",
+    "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/260.png",
+    "addedAt": "2025-10-29T21:39:40.260Z"
+  },
+  {
+    "id": 330,
+    "name": "flygon",
+    "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/330.png",
+    "addedAt": "2025-10-29T21:39:57.382Z"
+  },
+  {
+    "id": 475,
+    "name": "gallade",
+    "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/475.png",
+    "addedAt": "2025-10-29T21:41:04.496Z"
+  },
+  {
+    "id": 610,
+    "name": "axew",
+    "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/610.png",
+    "addedAt": "2025-10-29T21:41:44.087Z"
+  },
+  {
+    "id": 715,
+    "name": "noivern",
+    "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/715.png",
+    "addedAt": "2025-10-29T21:42:12.942Z"
+  },
+  {
+    "id": 773,
+    "name": "silvally",
+    "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/773.png",
+    "addedAt": "2025-10-29T21:42:28.675Z"
+  },
+  {
+    "id": 823,
+    "name": "corviknight",
+    "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/823.png",
+    "addedAt": "2025-10-29T21:42:45.725Z"
+  },
+  {
+    "id": 887,
+    "name": "dragapult",
+    "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/887.png",
+    "addedAt": "2025-10-29T21:43:02.851Z"
+  },
+  {
+    "id": 959,
+    "name": "tinkaton",
+    "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/959.png",
+    "addedAt": "2025-10-29T21:43:21.430Z"
+  },
+  {
+    "id": 980,
+    "name": "clodsire",
+    "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/980.png",
+    "addedAt": "2025-10-29T21:43:27.180Z"
+  },
+  {
+    "id": 1008,
+    "name": "miraidon",
+    "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1008.png",
+    "addedAt": "2025-10-29T21:43:36.390Z"
   }
 ]

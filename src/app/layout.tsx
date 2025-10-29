@@ -31,7 +31,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             </main>
 
             <footer className="bg-[#651FA6] text-center p-4 mt-8">
-              {/* Actualiza el texto del footer si quieres */}
               <p>Actividad 7 - Sistemas Distribuidos</p>
             </footer>
           </PokemonProvider>

@@ -43,7 +43,7 @@ export default function PokemonItem({ pokemon }: PokemonItemProps) {
       addFavoriteMutation.mutate({
         id: numericPokemonId,
         name: pokemon.name,
-        imageUrl: imageUrl, // Usamos la URL que construimos
+        imageUrl: imageUrl, // URL que construimos
       });
     }
   };
@@ -69,7 +69,7 @@ export default function PokemonItem({ pokemon }: PokemonItemProps) {
             aria-label={isFavorite ? `Quitar ${pokemon.name} de favoritos` : `Agregar ${pokemon.name} a favoritos`}
             title={isFavorite ? `Quitar ${pokemon.name} de favoritos` : `Agregar ${pokemon.name} a favoritos`}
           >
-            <svg /* SVG de estrella sin cambios */
+            <svg /* estrella */
               xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
               fill={isFavorite ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="1.5"
               className={`w-6 h-6 ${isFavorite ? 'text-yellow-400' : 'text-gray-400 hover:text-gray-600'}`} // Estrella gris si no es favorito
