@@ -18,12 +18,6 @@
     "addedAt": "2025-10-23T23:35:10.466Z"
   },
   {
-    "id": 487,
-    "name": "giratina-altered",
-    "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/487.png",
-    "addedAt": "2025-10-24T00:00:15.075Z"
-  },
-  {
     "id": 181,
     "name": "ampharos",
     "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/181.png",
@@ -66,12 +60,6 @@
     "addedAt": "2025-10-29T21:42:28.675Z"
   },
   {
-    "id": 823,
-    "name": "corviknight",
-    "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/823.png",
-    "addedAt": "2025-10-29T21:42:45.725Z"
-  },
-  {
     "id": 887,
     "name": "dragapult",
     "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/887.png",
@@ -94,5 +82,13 @@
     "name": "miraidon",
     "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1008.png",
     "addedAt": "2025-10-29T21:43:36.390Z"
+  },
+  {
+    "id": 4,
+    "name": "charmander",
+    "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png",
+    "nickname": "Chormander",
+    "description": "El favorito de mi señora",
+    "addedAt": "2025-11-05T23:32:47.262Z"
   }
 ]

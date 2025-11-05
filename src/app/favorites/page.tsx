@@ -10,8 +10,10 @@ import { FavoritePokemon } from "@/lib/favoritesDatabase";
 function FavoriteItem({ favorite }: { favorite: FavoritePokemon }) {
     const removeMutation = useRemoveFavorite();
 
+    const displayName = favorite.nickname?.trim ? favorite.nickname : favorite.name;
+
     const handleRemove = () => {
-        if (confirm(`¿Querés quitar a ${favorite.name} de favoritos?`)) {
+        if (confirm(`¿Querés quitar a ${displayName} de favoritos?`)) {
             removeMutation.mutate(favorite.id);
         }
     }
@@ -20,8 +22,13 @@ function FavoriteItem({ favorite }: { favorite: FavoritePokemon }) {
         <div className="border rounded-lg p-4 flex flex-col items-center justify-between">
              <Link href={`/pokemon/${favorite.name}`}>
                  <img src={favorite.imageUrl} alt={favorite.name} className="w-24 h-24"/>
-                 <h3 className="font-semibold capitalize mt-2">{favorite.name}</h3>
+                 <h3 className="font-semibold capitalize mt-2">{displayName}</h3>
             </Link>
+
+            {favorite.description && (
+                <p className="text-sm text-gray-300 mt-1 italic">{favorite.description}</p>
+            )}
+
             <button
                 onClick={handleRemove}
                 disabled={removeMutation.isPending}
@@ -50,10 +57,10 @@ export default function FavoritesPage() {
 
   return (
     <div>
-      <h1 className="text-3xl font-bold mb-6">Mis Pokémon Favoritos</h1>
+      <h1 className="text-3xl font-bold mb-6 text-center">Mis Pokémon Favoritos</h1>
 
       {favorites && favorites.length > 0 ? (
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 text-center">
           {favorites.map((fav) => (
             <FavoriteItem key={fav.id} favorite={fav} />
           ))}

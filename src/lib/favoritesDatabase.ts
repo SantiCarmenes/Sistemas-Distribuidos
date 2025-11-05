@@ -8,6 +8,8 @@ export interface FavoritePokemon {
   id: number;
   name: string;
   imageUrl: string;
+  nickname?: string;
+  description?: string;
   addedAt: string;
 }
 

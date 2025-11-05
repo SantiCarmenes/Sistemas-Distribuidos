@@ -1,6 +1,7 @@
 // src/app/api/favorites/route.ts
 import { NextResponse } from "next/server";
 import { favoritesDB } from "@/lib/favoritesDatabase";
+
 export async function POST(request: Request) {
   try {
     const body = await request.json();
@@ -12,7 +13,11 @@ export async function POST(request: Request) {
       );
     }
 
-    if (typeof body.id !== 'number' || typeof body.name !== 'string' || typeof body.imageUrl !== 'string') {
+    if (typeof body.id !== 'number' || typeof body.name !== 'string' || 
+        typeof body.imageUrl !== 'string' ||
+        (body.nickname !== undefined && typeof body.nickname !== 'string') ||
+        (body.description !== undefined && typeof body.description !== 'string')
+       ) {
        return NextResponse.json(
         { error: "Tipos de datos inválidos" },
         { status: 400 }
@@ -23,12 +28,14 @@ export async function POST(request: Request) {
       id: body.id,
       name: body.name,
       imageUrl: body.imageUrl,
+      nickname: body.nickname,
+      description: body.description
     });
 
     if (!newFavorite) {
        return NextResponse.json(
         { error: `El Pokémon con ID ${body.id} ya está en favoritos` },
-        { status: 409 } // 409 Conflict, este puede pasar si le das muy rapido varias veces a la estrella, xq es un toggle
+        { status: 409 }
       );
     }
 
